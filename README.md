@@ -1,6 +1,8 @@
 # Weak-to-Strong Jailbreaking on Large Language Models
 
-[Arxiv Link](https://arxiv.org/pdf/2401.17256.pdf) 
+[arXiv page](https://arxiv.org/abs/2401.17256) 
+
+[Huggingface page](https://huggingface.co/papers/2401.17256)
 
 Code details will be polished soon.
 
@@ -13,7 +15,7 @@ You can see the following figure for a brief illustration of our attack.
 
 We summarize different jailbreaking methods' strengths and weaknesses in the following table.
 <!-- ![img](./fig/table.png) -->
-<img src="./fig/table.png" width="300">
+<img src="./fig/table.png" width="400">
 
 ## Structure
 
