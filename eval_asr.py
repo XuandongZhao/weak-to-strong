@@ -1,8 +1,4 @@
-import os
 import json
-import openai
-import time
-from tqdm import tqdm
 import numpy as np
 
 _test_prefixes = [
@@ -44,4 +40,24 @@ def not_matched(o):
             return 0
     return 1
 
+
 # Read from the file and calculate the not matched rate
+if __name__ == "__main__":
+    # Just one example
+    file_path = "./output/example.jsonl"
+    data = []
+    with open(file_path) as f:
+        for line in f:
+            data.append(json.loads(line))
+
+    asr_ref = []
+    asr_tgt = []
+    asr_att = []
+    for d in data:
+        asr_ref.append(not_matched(d['ref_result']))
+        asr_tgt.append(not_matched(d['tgt_result']))
+        asr_att.append(not_matched(d['att_result']))
+
+    print("ASR REF: ", np.mean(asr_ref))
+    print("ASR TGT: ", np.mean(asr_tgt))
+    print("ASR ATT: ", np.mean(asr_att))

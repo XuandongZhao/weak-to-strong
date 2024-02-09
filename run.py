@@ -118,7 +118,7 @@ if __name__ == "__main__":
     parser.add_argument("--ref_base_model_path", type=str, default="NousResearch/Llama-2-7b-chat-hf")
     parser.add_argument("--tgt_model_path", type=str, default="NousResearch/Llama-2-13b-chat-hf")
     parser.add_argument("--hf_cache_dir", type=str, default='./hf_models')
-    parser.add_argument("--output_dir", type=str, default='./data/')
+    parser.add_argument("--output_dir", type=str, default='./output/')
     parser.add_argument("--output_file", type=str, default='llama2_13b')
     parser.add_argument("--max_gen_len", type=int, default=256)
     parser.add_argument("--temperature", type=float, default=0.1)
