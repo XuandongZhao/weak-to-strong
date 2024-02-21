@@ -27,6 +27,7 @@ We summarize different jailbreaking methods' strengths and weaknesses in the fol
 - `eval_gpt.py`: Contains the scripts used to evaluate the GPT4 scores.
 - `eval_harm.py`: Contains the scripts used to evaluate the Harm scores.
 
+For getting the unsafe small model, please refer to this repo: https://github.com/BeyonderXX/ShadowAlignment
 
 ## Running the experiments
 
