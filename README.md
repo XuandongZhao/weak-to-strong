@@ -1,24 +1,38 @@
 # Weak-to-Strong Jailbreaking on Large Language Models
 
-[arXiv page](https://arxiv.org/abs/2401.17256) 
+📣 **Update**: Our paper has been accepted to **ICML 2025**!  
 
-[Huggingface page](https://huggingface.co/papers/2401.17256)
+📄 [arXiv](https://arxiv.org/abs/2401.17256) | 🤗 [HuggingFace Paper Page](https://huggingface.co/papers/2401.17256)
 
-## Introduction
+---
 
-Although significant efforts have been dedicated to aligning large language models (LLMs), red-teaming reports suggest that these carefully aligned LLMs could still be jailbroken through adversarial prompts, tuning, or decoding. Upon examining the jailbreaking vulnerability of aligned LLMs, we observe that the decoding distributions of jailbroken and aligned models differ only in the initial generations. This observation motivates us to propose the weak-to-strong jailbreaking attack, where adversaries can utilize smaller unsafe/aligned LLMs (e.g., 7B) to guide jailbreaking against significantly larger aligned LLMs (e.g., 70B). To jailbreak, one only needs to additionally decode two smaller LLMs once, which involves minimal computation and latency compared to decoding the larger LLMs.
+## Overview
 
-You can see the following figure for a brief illustration of our attack.
-![img](./fig/pipeline.png)
+Despite major advances in aligning large language models (LLMs), red-teaming efforts consistently reveal vulnerabilities: even well-aligned LLMs can be **jailbroken** to produce harmful outputs via adversarial prompts, fine-tuning, or decoding tricks.
 
-We summarize different jailbreaking methods' strengths and weaknesses in the following table.
-<!-- ![img](./fig/table.png) -->
-<div align="center">
-    <img src="./fig/table.png" width="450">
-</div>
+This repository implements **Weak-to-Strong Jailbreaking** — a novel and efficient **inference-time attack** that leverages small (7B) unsafe/aligned LLMs to guide the generation of much larger (e.g., 70B) aligned models into producing unsafe outputs. Surprisingly, the attack only requires **one forward pass through each small model**, making it both **computationally cheap** and **highly effective**.
 
+### Key Insight
 
-## Structure
+Aligned and jailbroken LLMs mainly diverge in their **initial decoding steps**. This enables us to apply **log-probability algebra** — using small models to shift the strong model's token distribution early in generation — resulting in **high attack success rates (ASR > 99%)** with **minimal cost**.
+
+---
+
+## Pipeline Illustration
+
+<p align="center">
+  <img src="./fig/pipeline.png" alt="pipeline" width="600"/>
+</p>
+
+We summarize the trade-offs of different jailbreaking strategies below:
+
+<p align="center">
+  <img src="./fig/table.png" width="450"/>
+</p>
+
+---
+
+## Repository Structure
 
 - `data/`: Contains the data used for the experiments.
 - `run.py`: Contains the scripts used to run the experiments.
